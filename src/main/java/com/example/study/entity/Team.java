@@ -6,12 +6,11 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-@ToString(exclude = "members")
-@EqualsAndHashCode
+@Getter @Setter
+@ToString(exclude = "members") @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "tbl_team")
 public class Team {
@@ -21,9 +20,9 @@ public class Team {
     @Column(name = "team_id")
     private Long id;
 
-    @OneToMany(mappedBy= "team")
-    private List<Member> members = new ArrayList<>();
+    private String name;
 
-    private int age;
+    @OneToMany(mappedBy = "team")
+    private List<Member> members = new ArrayList<>();
 
 }
